@@ -23,7 +23,7 @@
 
 @layer base {
   body {
-    @apply font-sans text-ebony bg-[#F8F8F8];
+    @apply font-sans text-ebony bg-[#F8F8F8] min-w-0;
   }
 
   .serif {

@@ -33,10 +33,10 @@ const AppContent = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col pt-20">
+    <div className="min-h-screen flex flex-col pt-20 min-w-0 w-full">
       <Navbar />
       <Cart />
-      <main className="flex-grow">
+      <main className="flex-grow min-w-0 w-full">
         <Routes>
           <Route path="/" element={
             <>
@@ -66,8 +66,8 @@ const AppContent = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-100 py-20 px-8">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
+      <footer className="bg-slate-50 border-t border-slate-100 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 w-full min-w-0">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 sm:gap-16 w-full min-w-0">
           <div className="col-span-1 md:col-span-1">
             <h2 className="text-2xl font-bold text-ebony serif italic mb-6">Hometown<span className="text-yellow-accent">.</span></h2>
             <p className="text-slate-400 text-sm leading-relaxed">

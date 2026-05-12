@@ -22,14 +22,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfaf2] pt-32 pb-20 px-8 flex items-center justify-center">
-      <div className="w-full max-w-lg">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold text-ebony serif italic mb-4">{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
-          <p className="text-gold-600 text-[10px] font-black uppercase tracking-[0.4em]">Experience the Art of Baking</p>
+    <div className="min-h-screen bg-[#fcfaf2] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center w-full min-w-0">
+      <div className="w-full max-w-lg min-w-0">
+        <div className="text-center mb-8 sm:mb-12 px-1">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-ebony serif italic mb-4">{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
+          <p className="text-gold-600 text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.4em]">Experience the Art of Baking</p>
         </div>
 
-        <div className="bg-white rounded-[4rem] border border-gold-100 p-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-white rounded-3xl sm:rounded-[3rem] md:rounded-[4rem] border border-gold-100 p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden w-full min-w-0">
           <div className="absolute top-0 right-0 w-32 h-32 bg-gold-50 rounded-full blur-3xl -translate-y-16 translate-x-16"></div>
           
           <form onSubmit={handleSubmit} className="space-y-8 relative z-10">

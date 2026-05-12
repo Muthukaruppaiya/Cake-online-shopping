@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
 import { useShop } from '../context/ShopContext';
 import { X, Plus, Minus, Trash2, ArrowRight, ShoppingBag, Info } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal, isCartOpen, setIsCartOpen } = useShop();
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsCartOpen(false);
+  }, [location.pathname, setIsCartOpen]);
 
   if (!isCartOpen) return null;
 
