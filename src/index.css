@@ -1,31 +1,84 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@theme {
+  --color-gold-50: #fffbf0;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #fcd34d;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
+  --color-gold-700: #b45309;
+  --color-gold-800: #92400e;
+  --color-gold-900: #78350f;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #fdf2f8; 
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 100%);
+  /* Hometown Inspired Colors */
+  --color-maroon-500: #901C3B;
+  --color-maroon-600: #7a1631;
+  --color-maroon-700: #641127;
+  --color-yellow-accent: #FFB800;
+  --color-yellow-hover: #e6a600;
+  --color-ebony: #1A1A1A;
 }
 
 @layer base {
   body {
-    @apply text-slate-800;
+    @apply font-sans text-ebony bg-[#F8F8F8];
   }
+
+  .serif {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-10 py-4 bg-maroon-500 text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-yellow-accent hover:text-ebony transition-all duration-500 shadow-lg shadow-maroon-500/20 active:scale-95;
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border-b border-slate-100;
+  }
+
+  .input-field {
+    @apply px-8 py-5 bg-white border border-slate-100 rounded-3xl focus:outline-none focus:ring-2 focus:ring-maroon-500/20 focus:border-maroon-500 transition-all text-sm font-medium placeholder:text-slate-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-2xl hover:-translate-y-2 transition-all duration-700;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes luxury {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-luxury {
+  animation: luxury 1s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #901C3B;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7a1631;
 }
