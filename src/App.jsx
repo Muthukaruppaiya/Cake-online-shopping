@@ -2,15 +2,18 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import { ShopProvider } from './context/ShopContext';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ProductGrid from './components/ProductGrid';
 import Cart from './components/Cart';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
 import Admin from './pages/Admin';
 import AdminLogin from './pages/AdminLogin';
 import Login from './pages/Login';
 import Account from './pages/Account';
 import Loading from './components/Loading';
+import WhatsAppButton from './components/WhatsAppButton';
+import CakeOptionsModal from './components/CakeOptionsModal';
 
 const InstagramIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-gold-600 cursor-pointer transition-colors"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -36,29 +39,13 @@ const AppContent = () => {
     <div className="min-h-screen flex flex-col pt-20 min-w-0 w-full">
       <Navbar />
       <Cart />
+      <CakeOptionsModal />
+      <WhatsAppButton />
       <main className="flex-grow min-w-0 w-full">
         <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <section className="py-24 px-8 container mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="w-10 h-px bg-maroon-500"></span>
-                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-maroon-500">Our Collection</span>
-                    </div>
-                    <h2 className="text-5xl font-bold text-ebony serif italic tracking-tighter">Artisan Creations</h2>
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="px-8 py-3 rounded-full border border-slate-100 text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">All Cakes</button>
-                    <button className="px-8 py-3 rounded-full bg-slate-50 text-slate-400 text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 transition-all">Best Sellers</button>
-                  </div>
-                </div>
-                <ProductGrid />
-              </section>
-            </>
-          } />
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/cake/:id" element={<ProductDetail />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/account" element={<Account />} />
@@ -77,9 +64,10 @@ const AppContent = () => {
           <div>
             <h3 className="font-bold text-slate-900 mb-8 uppercase tracking-widest text-xs">Atelier</h3>
             <ul className="space-y-4 text-slate-500 text-sm">
-              <li><Link to="/">Signature Series</Link></li>
-              <li><Link to="/">Xpress Delivery</Link></li>
-              <li><Link to="/">Handcrafted Masters</Link></li>
+              <li><Link to="/">Home</Link></li>
+              <li><a href="/#birthday-cakes">Birthday Cakes</a></li>
+              <li><a href="/#wedding-cakes">Wedding Cakes</a></li>
+              <li><Link to="/shop">All Cakes</Link></li>
             </ul>
           </div>
           <div>

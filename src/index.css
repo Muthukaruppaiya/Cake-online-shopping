@@ -22,6 +22,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply font-sans text-ebony bg-[#F8F8F8] min-w-0;
   }
