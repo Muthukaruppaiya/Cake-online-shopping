@@ -16,7 +16,7 @@ const Account = () => {
   const userOrders = orders.filter(o => o.customer === user.name);
 
   return (
-    <div className="min-h-screen bg-[#fcfaf2] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8 w-full min-w-0">
+    <div className="min-h-screen bg-[#fcfaf2] pt-4 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8 w-full min-w-0">
       <div className="container mx-auto max-w-5xl w-full min-w-0">
         <header className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6 sm:gap-8">
           <div className="min-w-0">

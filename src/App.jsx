@@ -11,6 +11,7 @@ import Admin from './pages/Admin';
 import AdminLogin from './pages/AdminLogin';
 import Login from './pages/Login';
 import Account from './pages/Account';
+import Policies from './pages/Policies';
 import Loading from './components/Loading';
 import WhatsAppButton from './components/WhatsAppButton';
 import CakeOptionsModal from './components/CakeOptionsModal';
@@ -49,17 +50,22 @@ const AppContent = () => {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/policies" element={<Policies />} />
         </Routes>
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-100 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 w-full min-w-0">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 sm:gap-16 w-full min-w-0">
+      <footer className="bg-slate-50 border-t border-slate-100 pt-12 pb-8 sm:pt-20 px-4 sm:px-6 lg:px-8 w-full min-w-0">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 sm:gap-16 w-full min-w-0 mb-12 sm:mb-16">
           <div className="col-span-1 md:col-span-1">
             <h2 className="text-2xl font-bold text-ebony serif italic mb-6">Hometown<span className="text-yellow-accent">.</span></h2>
             <p className="text-slate-400 text-sm leading-relaxed">
               Crafting premium artisan cakes with zero preservatives. Delivered fresh from our atelier to your doorstep in Periyakulam.
             </p>
+            <div className="mt-4 pt-4 border-t border-slate-200/60 flex items-center gap-2">
+              <span className="text-[9px] font-black tracking-widest text-slate-400 uppercase bg-slate-100 px-2 py-0.5 rounded border border-slate-200/50">FSSAI</span>
+              <span className="text-[10px] font-bold text-slate-500">Lic. No. 12423999000123</span>
+            </div>
           </div>
           <div>
             <h3 className="font-bold text-slate-900 mb-8 uppercase tracking-widest text-xs">Atelier</h3>
@@ -83,6 +89,17 @@ const AppContent = () => {
             <div className="flex gap-4 text-slate-400">
               <InstagramIcon />
             </div>
+          </div>
+        </div>
+
+        {/* Bottom Sub-footer */}
+        <div className="container mx-auto pt-8 border-t border-slate-200/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-medium">
+          <p>© {new Date().getFullYear()} Hometown. All rights reserved.</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+            <Link to="/policies?tab=refund" className="hover:text-maroon-500 transition-colors">Refund Policy</Link>
+            <Link to="/policies?tab=shipping" className="hover:text-maroon-500 transition-colors">Shipping Policy</Link>
+            <Link to="/policies?tab=terms" className="hover:text-maroon-500 transition-colors">Terms & Conditions</Link>
+            <Link to="/policies?tab=privacy" className="hover:text-maroon-500 transition-colors">Privacy Policy</Link>
           </div>
         </div>
       </footer>

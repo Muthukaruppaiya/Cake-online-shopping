@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfaf2] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center w-full min-w-0">
+    <div className="min-h-screen bg-[#fcfaf2] pt-4 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center w-full min-w-0">
       <div className="w-full max-w-lg min-w-0">
         <div className="text-center mb-8 sm:mb-12 px-1">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-ebony serif italic mb-4">{isLogin ? 'Welcome Back' : 'Create Account'}</h2>

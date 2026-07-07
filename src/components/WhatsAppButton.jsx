@@ -1,20 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 
 const PHONE = '919876543210';
 
 const WhatsAppButton = () => {
-  const [showTip, setShowTip] = useState(true);
+  const [showTip, setShowTip] = useState(() => {
+    return sessionStorage.getItem('whatsapp-tip-dismissed') !== 'true';
+  });
+
+  useEffect(() => {
+    if (showTip) {
+      const timer = setTimeout(() => {
+        setShowTip(false);
+      }, 6000); // collapse after 6 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [showTip]);
+
+  const handleDismiss = () => {
+    setShowTip(false);
+    sessionStorage.setItem('whatsapp-tip-dismissed', 'true');
+  };
 
   return (
-    <div className="fixed bottom-5 right-4 z-50 flex items-center gap-2 md:bottom-6 md:right-6">
+    <div className="fixed bottom-6 right-4 z-40 flex items-center gap-2 md:bottom-8 md:right-6 pointer-events-none">
       {showTip && (
-        <div className="relative flex items-center bg-white rounded-2xl shadow-lg border border-slate-100 pl-4 pr-9 py-2.5 max-w-[140px]">
-          <span className="text-xs font-semibold text-ebony">Chat with us</span>
+        <div className="relative flex items-center bg-white rounded-2xl shadow-lg border border-slate-100 pl-4 pr-9 py-2.5 max-w-[140px] pointer-events-auto transition-all animate-float">
+          <span className="text-xs font-semibold text-ebony select-none">Chat with us</span>
           <button
             type="button"
-            onClick={() => setShowTip(false)}
-            className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-ebony text-white rounded-full flex items-center justify-center"
+            onClick={handleDismiss}
+            className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-ebony text-white rounded-full flex items-center justify-center cursor-pointer"
             aria-label="Close"
           >
             <X className="w-3 h-3" />
@@ -26,7 +42,7 @@ const WhatsAppButton = () => {
         href={`https://wa.me/${PHONE}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg hover:scale-105 transition-transform shrink-0"
+        className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg hover:scale-105 transition-transform shrink-0 pointer-events-auto"
         aria-label="Chat on WhatsApp"
       >
         <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" aria-hidden="true">
@@ -38,3 +54,4 @@ const WhatsAppButton = () => {
 };
 
 export default WhatsAppButton;
+

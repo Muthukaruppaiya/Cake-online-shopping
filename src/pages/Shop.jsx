@@ -15,15 +15,17 @@ const categoryLabels = {
 const Shop = () => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
+  const search = searchParams.get('search');
   const { cakes } = useShop();
 
   const filteredCakes = useMemo(() => {
     return cakes.filter((c) => {
       if (c.isActive === false) return false;
       if (category && c.section !== category) return false;
+      if (search && !c.name.toLowerCase().includes(search.toLowerCase()) && !c.description.toLowerCase().includes(search.toLowerCase())) return false;
       return true;
     });
-  }, [cakes, category]);
+  }, [cakes, category, search]);
 
   return (
     <div className="py-6 sm:py-12 px-3 sm:px-8 container mx-auto animate-luxury bg-[#FFF8F4] min-h-screen">
@@ -36,9 +38,9 @@ const Shop = () => {
 
       <div className="mb-6 sm:mb-12 px-1">
         <h1 className="text-lg sm:text-4xl font-bold text-maroon-600 sm:serif sm:italic tracking-tight leading-snug">
-          {category ? categoryLabels[category] || 'All Cakes' : 'All Cakes'}
+          {search ? `Search Results for "${search}"` : (category ? categoryLabels[category] || 'All Cakes' : 'All Cakes')}
         </h1>
-        <p className="text-slate-500 mt-1 text-sm">{filteredCakes.length} cakes available</p>
+        <p className="text-slate-500 mt-1 text-sm">{filteredCakes.length} {filteredCakes.length === 1 ? 'cake' : 'cakes'} available</p>
       </div>
 
       <div className="grid grid-cols-2 gap-3 md:hidden">

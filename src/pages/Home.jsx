@@ -1,5 +1,4 @@
 import Hero from '../components/Hero';
-import CategoryStrip from '../components/CategoryStrip';
 import ProductSection from '../components/ProductSection';
 import WhyChooseUs from '../components/WhyChooseUs';
 import FAQ from '../components/FAQ';
@@ -16,7 +15,6 @@ const Home = () => {
     <div className="animate-luxury">
       {/* Landing — hero & categories only above the fold */}
       <Hero />
-      <CategoryStrip />
 
       {/* Product catalog — shown after landing, CakeSquare-style sections */}
       <div id="cakes" className="bg-[#FFF8F4]">

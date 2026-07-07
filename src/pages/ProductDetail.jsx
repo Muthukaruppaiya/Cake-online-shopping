@@ -141,7 +141,7 @@ const ProductDetail = () => {
                   id="weight-select"
                   value={activeWeight}
                   onChange={(e) => setWeight(e.target.value)}
-                  className="flex-1 max-w-md px-4 py-2.5 border border-slate-200 rounded-lg bg-white text-ebony text-sm focus:outline-none focus:ring-2 focus:ring-maroon-500/20 focus:border-maroon-400"
+                  className="flex-1 max-w-md px-4 py-3 border border-slate-200 rounded-lg bg-white text-ebony text-sm focus:outline-none focus:ring-2 focus:ring-maroon-500/20 focus:border-maroon-400 cursor-pointer h-11"
                 >
                   {weights.map((w) => (
                     <option key={w} value={w}>
@@ -153,52 +153,59 @@ const ProductDetail = () => {
 
               {/* Cake Type */}
               {cake.allowEggless && (
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
-                  <label htmlFor="type-select" className="text-sm font-semibold text-maroon-700 w-28 shrink-0">
-                    Cake Type
-                  </label>
-                  <div className="flex-1 flex items-center gap-3 max-w-md">
-                    <select
-                      id="type-select"
-                      value={cakeType}
-                      onChange={(e) => setCakeType(e.target.value)}
-                      className="flex-1 px-4 py-2.5 border border-slate-200 rounded-lg bg-white text-ebony text-sm focus:outline-none focus:ring-2 focus:ring-maroon-500/20 focus:border-maroon-400"
-                    >
-                      <option value="">Choose an option</option>
-                      <option value="Eggless">Eggless</option>
-                      <option value="With Egg">With Egg</option>
-                    </select>
-                    {cakeType && (
-                      <button
-                        type="button"
-                        onClick={handleClearType}
-                        className="text-sm text-slate-500 hover:text-maroon-600 underline shrink-0"
+                <div className="space-y-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                    <label htmlFor="type-select" className="text-sm font-semibold text-maroon-700 w-28 shrink-0">
+                      Cake Type
+                    </label>
+                    <div className="flex-1 flex items-center gap-3 max-w-md">
+                      <select
+                        id="type-select"
+                        value={cakeType}
+                        onChange={(e) => setCakeType(e.target.value)}
+                        className="flex-1 px-4 py-3 border border-slate-200 rounded-lg bg-white text-ebony text-sm focus:outline-none focus:ring-2 focus:ring-maroon-500/20 focus:border-maroon-400 cursor-pointer h-11"
                       >
-                        Clear
-                      </button>
-                    )}
+                        <option value="">Choose an option</option>
+                        <option value="Eggless">Eggless</option>
+                        <option value="With Egg">With Egg</option>
+                      </select>
+                      {cakeType && (
+                        <button
+                          type="button"
+                          onClick={handleClearType}
+                          className="text-sm text-slate-500 hover:text-maroon-600 underline shrink-0 cursor-pointer py-2"
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
                   </div>
+                  {!canAdd && (
+                    <div className="flex sm:pl-34 mt-1">
+                      <p className="text-xs font-semibold text-red-500">Please select a cake type to continue.</p>
+                    </div>
+                  )}
                 </div>
               )}
 
               {/* Quantity + Add */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
-                <div className="flex items-center border border-slate-200 rounded-lg overflow-hidden">
+                <div className="flex items-center border border-slate-200 rounded-lg overflow-hidden h-11">
                   <button
                     type="button"
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-colors"
+                    className="w-11 h-11 flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
                     aria-label="Decrease quantity"
                   >
                     <Minus className="w-4 h-4" />
                   </button>
-                  <span className="w-12 text-center text-sm font-semibold text-ebony border-x border-slate-200 py-2">
+                  <span className="w-12 text-center text-sm font-semibold text-ebony border-x border-slate-200 py-2.5">
                     {quantity}
                   </span>
                   <button
                     type="button"
                     onClick={() => setQuantity((q) => q + 1)}
-                    className="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-colors"
+                    className="w-11 h-11 flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
                     aria-label="Increase quantity"
                   >
                     <Plus className="w-4 h-4" />
@@ -209,24 +216,24 @@ const ProductDetail = () => {
                   type="button"
                   onClick={handleAddToBasket}
                   disabled={!canAdd}
-                  className="flex-1 min-w-[200px] py-3 px-8 bg-[#a88194] hover:bg-[#967085] disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-bold uppercase tracking-wider rounded-lg transition-colors"
+                  className="flex-1 min-w-[200px] h-11 px-8 bg-maroon-500 hover:bg-maroon-600 disabled:bg-[#a88194] disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer shadow-md shadow-maroon-500/10 active:scale-[0.98]"
                 >
                   Add to Basket
                 </button>
               </div>
-
-              {!canAdd && (
-                <p className="text-sm text-red-500">Please select a cake type to continue.</p>
-              )}
             </div>
 
             {/* Description */}
-            <div className="mt-10 pt-8 border-t border-slate-100 space-y-4">
+            <div className="mt-8 pt-6 border-t border-slate-100 space-y-4">
               {longDescription.map((para, i) => (
                 <p key={i} className="text-sm text-slate-600 leading-relaxed">
                   {para}
                 </p>
               ))}
+              <div className="pt-4 border-t border-slate-100/80 flex items-center gap-2 text-slate-400 text-xs">
+                <span className="text-[9px] font-black tracking-widest uppercase bg-slate-50 px-2 py-0.5 rounded border border-slate-200/50">FSSAI</span>
+                <span>Lic. No. 12423999000123</span>
+              </div>
             </div>
           </div>
         </div>

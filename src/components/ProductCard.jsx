@@ -25,10 +25,13 @@ const ProductCard = ({ cake, compact = false }) => {
             </span>
           </div>
 
-          <h3 className="mt-2.5 text-[13px] font-bold text-maroon-600 leading-snug line-clamp-2 min-h-[2.25rem]">
+          <h3 className="mt-2.5 text-[13px] font-bold text-maroon-600 leading-snug line-clamp-1">
             {cake.name}
           </h3>
-          <p className="mt-1 text-base font-bold text-ebony">
+          {cake.description && (
+            <p className="mt-1 text-[11px] text-slate-500 leading-relaxed line-clamp-2">{cake.description}</p>
+          )}
+          <p className="mt-1.5 text-base font-bold text-ebony">
             {hasMultipleWeights ? (
               <>
                 <span className="text-[10px] font-semibold text-slate-400 uppercase">From </span>
@@ -42,7 +45,7 @@ const ProductCard = ({ cake, compact = false }) => {
 
         <Link
           to={productUrl}
-          className="w-full mt-2.5 py-2.5 bg-maroon-500 text-white text-[11px] font-bold uppercase tracking-wide rounded-full hover:bg-maroon-600 active:scale-[0.98] transition-all text-center block"
+          className="w-full mt-2.5 py-3.5 bg-maroon-500 text-white text-[11px] font-bold uppercase tracking-wide rounded-full hover:bg-maroon-600 active:scale-[0.98] transition-all text-center block"
         >
           Buy Now
         </Link>
@@ -73,10 +76,13 @@ const ProductCard = ({ cake, compact = false }) => {
         </div>
 
         <div className="p-4">
-          <h3 className="font-bold text-maroon-600 text-sm leading-snug line-clamp-2 min-h-[2.5rem] group-hover:text-maroon-700 transition-colors">
+          <h3 className="font-bold text-maroon-600 text-sm leading-snug line-clamp-1 group-hover:text-maroon-700 transition-colors">
             {cake.name}
           </h3>
-          <p className="text-xl font-bold text-ebony mt-2">
+          {cake.description && (
+            <p className="mt-1 text-[11px] text-slate-400 leading-relaxed line-clamp-2">{cake.description}</p>
+          )}
+          <p className="text-lg font-bold text-ebony mt-2">
             {hasMultipleWeights ? (
               <>
                 <span className="text-[10px] font-semibold text-slate-400 uppercase block">From</span>
@@ -92,7 +98,7 @@ const ProductCard = ({ cake, compact = false }) => {
       <div className="px-4 pb-4 -mt-2">
         <Link
           to={productUrl}
-          className="w-full py-3 bg-maroon-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-maroon-600 transition-colors text-center block"
+          className="w-full py-3.5 bg-maroon-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-maroon-600 transition-colors text-center block"
         >
           Buy Now
         </Link>

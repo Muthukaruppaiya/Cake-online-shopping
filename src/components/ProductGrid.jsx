@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Star, Plus } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useState } from 'react';
-import { calculateCakePrice, formatPrice } from '../utils/pricing';
+import { calculateCakePrice, formatPrice, formatWeightLabel } from '../utils/pricing';
 
 const ProductGrid = ({ categoryFilter = null }) => {
   const { addToCart, cakes } = useShop();
@@ -85,13 +85,13 @@ const ProductGrid = ({ categoryFilter = null }) => {
                       key={w}
                       type="button"
                       onClick={() => handleOptionChange(cake.id, 'weight', w)}
-                      className={`min-w-[52px] flex-1 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all ${
+                      className={`min-w-[52px] flex-1 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all cursor-pointer ${
                         currentOptions.weight === w
                           ? 'bg-ebony text-white border-ebony'
                           : 'bg-slate-50 border-slate-100 text-slate-400 hover:border-maroon-500 hover:text-maroon-500'
                       }`}
                     >
-                      {w}
+                      {formatWeightLabel(w)}
                     </button>
                   ))}
                 </div>
@@ -102,7 +102,7 @@ const ProductGrid = ({ categoryFilter = null }) => {
                         key={t}
                         type="button"
                         onClick={() => handleOptionChange(cake.id, 'type', t)}
-                        className={`flex-1 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all ${
+                        className={`flex-1 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all cursor-pointer ${
                           currentOptions.type === t
                             ? 'bg-maroon-500 text-white border-maroon-500 shadow-lg shadow-maroon-500/20'
                             : 'bg-slate-50 border-slate-100 text-slate-400 hover:border-maroon-500 hover:text-maroon-500'

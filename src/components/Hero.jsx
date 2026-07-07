@@ -12,10 +12,6 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-8 py-16 sm:py-20 lg:py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-luxury">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-2 rounded-full border border-white/20">
-              <Truck className="w-4 h-4 text-yellow-accent" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">2 Hour Cake Delivery — Periyakulam</span>
-            </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold serif leading-tight tracking-tight">
               Best Birthday Cake Designs in Theni

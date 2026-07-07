@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import { Search, Package, Box, Truck, CheckCircle, ArrowLeft, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../utils/pricing';
 
 const TrackOrder = () => {
   const { orders } = useShop();
@@ -19,7 +20,7 @@ const TrackOrder = () => {
   const getStatusIndex = (status) => statusSteps.indexOf(status);
 
   return (
-    <div className="min-h-screen bg-[#fcfaf2] pt-32 pb-20 px-8">
+    <div className="min-h-screen bg-[#fcfaf2] pb-20 px-8">
       <div className="container mx-auto max-w-4xl">
         <Link to="/" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gold-600 mb-12 hover:text-ebony transition-colors">
           <ArrowLeft className="w-3 h-3" /> Back to Shop
@@ -37,7 +38,7 @@ const TrackOrder = () => {
               onChange={(e) => setSearchId(e.target.value)}
               className="w-full pl-8 pr-16 py-6 rounded-full border border-gold-100 bg-gold-50/20 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold-500/10 transition-all font-bold text-ebony"
             />
-            <button type="submit" className="absolute right-2 top-2 bottom-2 bg-ebony text-gold-400 w-12 h-12 flex items-center justify-center rounded-full hover:bg-gold-500 hover:text-white transition-all shadow-xl">
+            <button type="submit" className="absolute right-2 top-2 bottom-2 bg-ebony text-gold-400 w-12 h-12 flex items-center justify-center rounded-full hover:bg-gold-500 hover:text-white transition-all shadow-xl cursor-pointer">
               <Search className="w-5 h-5" />
             </button>
           </form>
@@ -100,12 +101,12 @@ const TrackOrder = () => {
                   {trackedOrder.items.map((item, i) => (
                     <div key={i} className="flex justify-between items-center text-sm font-medium">
                       <p className="text-ebony">{item.quantity}x <span className="text-slate-500 italic">{item.name}</span></p>
-                      <p className="text-ebony">₹{item.price * item.quantity}</p>
+                      <p className="text-ebony">{formatPrice(item.price * item.quantity)}</p>
                     </div>
                   ))}
                   <div className="pt-4 border-t border-gold-50 flex justify-between items-center">
                     <p className="font-bold text-ebony">Total Amount</p>
-                    <p className="text-2xl font-bold text-ebony serif tracking-tighter italic">₹{trackedOrder.total}</p>
+                    <p className="text-2xl font-bold text-ebony serif tracking-tighter italic">{formatPrice(trackedOrder.total)}</p>
                   </div>
                 </div>
               </div>

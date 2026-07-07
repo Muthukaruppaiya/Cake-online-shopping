@@ -6,6 +6,8 @@ const WEIGHT_MULTIPLIERS = {
   '3kg': 1800,
 };
 
+export const GST_RATE = 0.18;
+
 export const getWeightMultiplier = (weight) => WEIGHT_MULTIPLIERS[weight] ?? 0;
 
 export const calculateCakePrice = (basePrice, weight) => {
@@ -16,11 +18,12 @@ export const formatPrice = (amount) => `₹${Number(amount).toLocaleString('en-I
 
 export const formatWeightLabel = (weight) => {
   const labels = {
-    '0.5kg': '500gms',
-    '1kg': '1kg',
-    '1.5kg': '1.5kg',
-    '2kg': '2kg',
-    '3kg': '3kg',
+    '0.5kg': '0.5 kg',
+    '1kg': '1 kg',
+    '1.5kg': '1.5 kg',
+    '2kg': '2 kg',
+    '3kg': '3 kg',
   };
-  return labels[weight] || weight;
+  return labels[weight] || (weight ? weight.replace('kg', ' kg') : '');
 };
+
